@@ -1,0 +1,808 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, rgba(41, 5, 71, 0.87), rgba(24, 24, 24, 1));
+    color:white;
+}
+#yesil{
+    color: green;
+}
+h2{
+    color: green;
+}
+.spotify-container {
+    display: flex; /* Elemanları esnek düzenliyoruz */
+    flex-direction: column; /* Elemanları dikey sıralıyoruz */
+    height: 100vh; /* Tam ekran yüksekliği sağlıyoruz */
+    animation: fadeIn 2s ease-in-out; /* Yumuşak bir giriş animasyonu ekliyoruz */
+}
+
+/* Animasyonlarımıza biraz büyüleyici dokunuşlar */
+@keyframes fadeIn {
+    from { opacity: 0; } /* Başlangıçta görünmez */
+    to { opacity: 1; } /* Sonra görünür hale geliyor */
+}
+
+.sidebar {
+    width: 20%; /* Kenar çubuğu genişliği */
+    background-color: #181818; /* Arka plan rengini belirliyoruz */
+    padding: 20px; /* İçerik etrafına boşluk ekliyoruz */
+    box-sizing: border-box; /* Kenar boyutlarını ayarlıyoruz */
+    position: fixed; /* Kenar çubuğunu sabitliyoruz */
+    height: 100%; /* Tam yüksekliği kaplıyoruz */
+    top: 0; /* Üstten sıfır piksel */
+    left: 0; /* Soldan sıfır piksel */
+    overflow-y: auto; /* Dikey kaydırma ekliyoruz */
+    transition: transform 0.3s ease; /* Yumuşak geçiş efekti */
+    animation: slideIn 1s ease-out; /* Kenar çubuğu kayarak gelsin */
+}
+
+/* Kenar çubuğunun kayma animasyonu */
+@keyframes slideIn {
+    from { transform: translateX(-100%); } /* Başlangıçta ekran dışında */
+    to { transform: translateX(0); } /* Nihai noktada ekran içinde */
+}
+
+.sidebar h2 {
+    font-size: 1.5rem; /* Başlık yazı boyutu */
+    margin-bottom: 30px; /* Alt kenar boşluğu */
+    font-family: 'Roboto', sans-serif; /* Yazı tipi ailesi */
+    color: yellow; /* Başlık rengi */
+}
+.sidebar img{
+    height: 50px;
+    height: 50px;
+}
+.sidebar ul {
+    list-style: none; /* Liste işaretlerini kaldırıyoruz */
+    padding: 0; /* Dolgu sıfır */
+    margin: 0; /* Kenar boşluğu sıfır */
+}
+
+.sidebar ul li {
+    font-size: 1.2rem; /* Liste elemanı yazı boyutu */
+    margin-bottom: 50px; /* Alt kenar boşluğu */
+    display: flex; /* Flex düzeni */
+    align-items: center; /* Merkezde hizalama */
+    color: #fff; /* Yazı rengi */
+    transition: color 0.3s, background-color 0.3s; /* Geçiş efekti */
+}
+
+.sidebar ul li:hover {
+    background-color:  rgba(50, 5, 71, 0.993); /* Hover üzerinde arka plan rengi */
+    padding: 8px 12px; /* İçerik etrafında boşluk */
+    border-radius: 5px; /* Kenarları yumuşatma */
+    color: yellow; /* Hover üzerinde yazı rengi */
+}
+.sidebar img:hover{
+    width: 1000px;
+    height: auto;
+
+}
+
+.sidebar ul li span {
+    margin-right: 10px; /* İkon ile metin arasında boşluk */
+    font-size: 1.5rem; /* Yazı boyutu */
+}
+
+.sidebar ul li .icon {
+    width: 45px; /* İkon genişliği */
+    height: auto; /* İkon yüksekliği */
+}
+
+.main-content {
+    margin-left: 20%; /* Soldan kenar çubuğu genişliği kadar boşluk bırak */
+    padding: 20px; /* İçerik etrafında boşluk bırak */
+    flex: 1; /* Kalan alanı kapla */
+    overflow-y: auto; /* Dikey kaydırma ekle */
+}
+
+.top-bar {
+    display: flex; /* Flex düzeni */
+    align-items: center; /* Merkezde hizalama */
+    justify-content: space-between; /* Elemanlar arasına boşluk bırak */
+    margin-bottom: 20px; /* Alt kenar boşluğu */
+    animation: fadeInTop 1.5s ease-out; /* Üstten gelen animasyon */
+}
+
+@keyframes fadeInTop {
+    from { transform: translateY(-100%); opacity: 0; } /* Üstten gelir ve başlangıçta görünmez */
+    to { transform: translateY(0); opacity: 1; } /* Nihai pozisyonda ve görünür */
+}
+
+.search-bar {
+    width: 95%; /* Genişlik */
+    padding: 15px; /* İçerik etrafında boşluk */
+    font-size: 14px; /* Yazı boyutu */
+    border: none; /* Kenarlık yok */
+    border-radius: 15px; /* Köşe yuvarlama */
+    margin-right: 10px; /* Sağ kenar boşluğu */
+    transition: box-shadow 0.3s ease; /* Gölge geçiş efekti */
+    background-color: #181818;
+    color: white;
+}
+
+.search-bar:focus {
+    box-shadow: 0 0 10px 0 rgba(0, 255, 0, 0.5); /* Odaklanıldığında gölge efekti */
+}
+
+.user-profile {
+
+    display: flex; /* Flex düzeni */
+    align-items: center; /* Merkezde hizalama */
+    justify-content: center; /* Ortada hizalama */
+    margin-left: auto; /* Otomatik sol boşluk */
+}
+
+.user-profile img {
+    width: 60px; /* Görüntü genişliği */
+    height: auto; /* Otomatik yükseklik */
+    border-radius: 50%; /* Tam daire */
+    cursor: pointer; /* İşaretçi imleç */
+    transition: transform 0.3s ease; /* Geçiş efekti */
+}
+
+.user-profile img:hover {
+    transform: scale(1.1); /* Hover üzerinde büyütme efekti */
+}
+
+.daily-mix-section {
+    margin-bottom: 30px; /* Alt kenar boşluğu */
+}
+
+/* Animasyonlar */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.daily-mix-section {
+    margin-bottom: 30px;
+}
+
+.daily-mixes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Kolonları biraz daha büyük yapıyoruz */
+    gap: 20px; /* Kartlar arasına boşluk bırakıyoruz */
+    animation: fadeInCards 2s ease-in-out; /* Kartların animasyonu */
+}
+
+@keyframes fadeInCards {
+    from { opacity: 0; transform: translateY(20px); } /* Başlangıçta görünmez ve alttan gelir */
+    to { opacity: 1; transform: translateY(0); } /* Nihai pozisyon ve görünür */
+}
+
+.daily-mix-section {
+    margin-bottom: 30px;
+}
+
+.daily-mixes {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 sütunlu düzen */
+    grid-template-rows: repeat(2, auto); /* 2 satır */
+    gap: 20px; /* Kartlar arasına boşluk bırakıyoruz */
+    animation: fadeInCards 2s ease-in-out; /* Kartların animasyonu */
+}
+
+@keyframes fadeInCards {
+    from { opacity: 0; transform: translateY(20px); } /* Başlangıçta görünmez ve alttan gelir */
+    to { opacity: 1; transform: translateY(0); } /* Nihai pozisyon ve görünür */
+}
+
+.mix-card {
+    background: linear-gradient(135deg, #800080fa 0%, #00800075 100%); /* Mor ve yeşil geçişli arka plan */
+
+    padding: 20px; /* İçerik etrafında boşluk */
+    border-radius: 15px; /* Köşe yuvarlama */
+    text-align: center; /* Ortada hizalama */
+    cursor: pointer; /* İşaretçi imleç */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Geçiş efektleri */
+    max-width: 210px; /* Maksimum genişlik */
+    height: auto; /* Otomatik yükseklik */
+}
+
+.mix-card:hover {
+    transform: scale(1.1); /* Hover üzerinde büyütme efekti */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);/* Hover üzerinde gölge efekti */
+}
+
+.mix-card img {
+    width: 100%; /* Genişlik %100 */
+    border-radius: 10px; /* Köşe yuvarlama */
+    margin-bottom: 15px; /* Alt boşluk */
+}
+
+.mix-card p {
+    font-size: 1.2rem; /* Yazı boyutu */
+    margin: 0 0 10px 0; /* Kenar boşlukları */
+    color: #fff; /* Yazı rengi */
+}
+
+.mspanix-card  {
+    font-size: 1rem; /* Yazı boyutu */
+    color: #ccc; /* Yazı rengi */
+}
+
+.daily-mix-section h2 {
+    font-size: 1.5rem; /* Başlık yazı boyutu */
+    margin-bottom: 15px; /* Alt kenar boşluğu */
+    font-family: 'Roboto', sans-serif; /* Yazı tipi ailesi */
+    color: #1db954; /* Başlık rengi */
+}
+
+
+
+.trending {
+    margin-bottom: 30px; /* Alt kenar boşluğu */
+}
+
+.now-playing-bar {
+    width: 99%;
+    background-color: #1db954;
+    padding: 5px; /* Padding'i küçültüyoruz */
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 100px; /* Yüksekliği daha da küçültüyoruz */
+    z-index: 1000; /* Üst üste binmeyi engellemek için yüksek bir z-index değeri */
+}
+.playing{
+    width: 500px;
+    height: 100px;
+}
+.card {
+    position: relative;
+    width: 110%; /* Genişliği %100 yapıyoruz */
+    height: 110%;
+    background: #181818;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.top {
+    position: relative;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.title-1 {
+    color: white;
+    font-size: 18px; /* Yazı boyutunu büyütüyoruz */
+    font-weight: bolder;
+    position: absolute;
+    top: 25px; /* Yazıyı yukarı taşıyoruz */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap; /* Yazının taşmasını engeller */
+}
+
+.title-2 {
+    color: white;
+    font-size: 14px; /* Yazı boyutunu büyütüyoruz */
+    font-weight: bold;
+    position: absolute;
+    top: 45px; /* Yazıyı yukarı taşıyoruz */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.time {
+    width: 70%; /* Genişliği küçültüyoruz */
+    background-color: #5e5e5e;
+    height: 3px; /* Yüksekliği biraz daha küçülttük */
+    border-radius: 3px;
+    position: absolute;
+    left: 15%;
+    bottom: 15px; /* Alt kısmı biraz daha yukarı aldık */
+}
+
+.elapsed {
+    width: 42%;
+    background-color: #1db954;
+    height: 100%;
+    border-radius: 3px;
+}
+
+.controls {
+    color: white;
+    display: flex;
+    position: absolute;
+    bottom: 55px; /* Kontrollerin konumunu daha yukarı aldık */
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto; /* Genişliği otomatik yapıyoruz */
+    justify-content: center; /* Butonları yan yana hizalıyoruz */
+    gap: 190px; /* Butonlar arasına boşluk bırakıyoruz */
+}
+
+.controls svg {
+    cursor: pointer;
+    transition: 0.1s;
+    height: 35px; /* Simgeleri büyütüyoruz */
+    width: 35px; /* Simgeleri büyütüyoruz */
+}
+
+.controls svg:hover {
+    color: #1db954;
+}
+
+.timetext {
+    color: white;
+    font-size: 12px; /* Yazı boyutunu büyütüyoruz */
+    position: absolute;
+    bottom: 15px; /* Zaman yazılarının konumunu barın sağına ve soluna alıyoruz */
+}
+
+.time_now {
+    left: 300px; /* Yazıyı sola hizalıyoruz */
+}
+
+.time_full {
+    right: 300px; /* Yazıyı sağa hizalıyoruz */
+}
+
+.playing {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    gap: 1px;
+    width: 50px;
+    height: 50px;
+    left: 75px;
+    top: 10px;
+
+}
+
+.greenline {
+    background-color: #1db954;
+    height: 20px;
+    width: 2px;
+    position: relative;
+    transform-origin: bottom;
+}
+
+.line-1 {
+    animation: infinite playing 1s ease-in-out;
+    animation-delay: 0.2s;
+}
+
+.line-2 {
+    animation: infinite playing 1s ease-in-out;
+    animation-delay: 0.5s;
+}
+
+.line-3 {
+    animation: infinite playing 1s ease-in-out;
+    animation-delay: 0.6s;
+}
+
+.line-4 {
+    animation: infinite playing 1s ease-in-out;
+    animation-delay: 0s;
+}
+
+.line-5 {
+    animation: infinite playing 1s ease-in-out;
+    animation-delay: 0.4s;
+}
+
+@keyframes playing {
+    0% {
+        transform: scaleY(0.1);
+    }
+
+    33% {
+        transform: scaleY(0.6);
+    }
+
+    66% {
+        transform: scaleY(0.9);
+    }
+
+    100% {
+        transform: scaleY(0.1);
+    }
+}
+
+
+
+
+
+
+.track-info {
+    display: flex; /* Flex düzeni */
+    align-items: center; /* Merkezde hizalama */
+}
+
+.track-info img {
+    margin-right: 10px; /* Görüntü ile metin arasında boşluk */
+    border-radius: 5px; /* Köşeleri biraz yumuşat */
+    width: 40px; /* Görüntü genişliği 50 piksel */
+    height: auto; /* Yükseklik otomatik */
+}
+
+.track-info h4 {
+    font-size: 1rem; /* Şarkı adı yazı boyutu */
+}
+
+.track-info p {
+    font-size: 0.9rem; /* Sanatçı adı yazı boyutu */
+}
+
+
+
+.progress-bar {
+    flex: 1; /* Kalan alanı kapla */
+    margin: 0 16px; /* Yanlarda boşluk */
+    display: flex; /* Flex düzeni */
+    align-items: center; /* Merkezde hizalama */
+}
+
+.bar {
+    flex: 1; /* Kalan alanı kapla */
+    height: 5px; /* Çubuk yüksekliği */
+    background: #333; /* Çubuk arka plan rengi */
+    position: relative; /* Konumlandırma için */
+}
+
+.progress {
+    height: 100%; /* Yükseklik tam dolu */
+    background: #1db954; /* İlerleme çubuğu rengi */
+}
+
+.progress-bar span {
+    font-size: 0.8rem; /* Zaman yazısı boyutu */
+    color: #aaa; /* Yazı rengi gri */
+    margin: 0 5px; /* Yanlarda boşluk */
+}
+.trending-songs {
+    display: flex;
+    justify-content: space-around; /* Kartları yatayda eşit aralıkla yerleştir */
+    margin-top: 20px;
+}
+
+.video-card {
+    position: relative;
+    width: 300px;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+}
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(50%); /* Videoyu karartıyoruz */
+    transition: filter 0.3s ease;
+}
+
+.video-card:hover .background-video {
+    filter: brightness(100%); /* Hover edildiğinde parlaklığı artırıyoruz */
+}
+
+.content {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    color: #fff;
+    text-align: left;
+    max-width: 60%; /* İçeriğin kart içinde kaplayacağı alan */
+}
+
+.cover-image {
+    width: 60px; /* Görüntü genişliğini belirtiyoruz */
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+
+h4 {
+    margin: 5px 0 0;
+    font-size: 1rem;
+}
+
+    
+#dene {
+    margin: 0;
+    font-size: 1rem;
+    color: #ccc;
+}
+
+
+/*footer */ 
+
+
+
+
+
+
+
+/* Profile style */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: #181818;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.left-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo a {
+    text-decoration: none;
+    font-size: 2.3rem; /* Yazı boyutunu büyütüyoruz */
+    font-weight: 600;
+    align-content: center;
+    color: #fff; /* Yazı rengini beyaz yapıyoruz */
+}
+
+.logo a span {
+    color: #1db954; /* Spotify yeşili */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding-top: 10px; /* Linkleri aşağıya alıyoruz */
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #fff; /* Yazı rengini beyaz yapıyoruz */
+    font-weight: 550;
+    font-size: 1.3rem; /* Yazı boyutunu büyütüyoruz */
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #1db954;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.user-profile a {
+    text-decoration: none;
+    color: #fff; /* Yazı rengini beyaz yapıyoruz */
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.user-profile a i {
+    margin-right: 8px;
+    color: #1db954;
+}
+
+.user-profile a:hover {
+    color: #1db954;
+}
+
+
+
+
+.cardd {
+    --main-color: white;
+    --submain-color: #78858F;
+    --bg-color: #0e0a0a;
+    font-family: sans-serif;
+    position: relative;
+    width: 80%; /* Genişliği arttırıyoruz */        
+    max-width: 600px; /* Kartın maksimum genişliği */
+    margin: 20px auto; /* Üstten ve alttan boşluk bırakıyoruz */
+    height: auto;
+    border-radius: 20px;
+    background: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Gölge ekliyoruz */
+    overflow: hidden;
+    padding: 40px 20px; /* İç boşluk ekliyoruz */
+}
+
+.cardd__img {
+    width: 600px;
+    height: 300px;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden; /* Resmin taşmasını engelliyoruz */
+}
+
+.cardd__img img {
+    width: 600px;
+    height: 300px;
+    border-radius: 20px 20px 0 0;
+}
+
+
+
+
+.cardd__avatar {
+    position: relative;
+    width: 114px;
+    height: 114px;
+    background: var(--bg-color);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -57px; /* Avatarı yukarı taşıyoruz */
+    z-index: 1; /* Avatarın önde olmasını sağlıyoruz */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Gölge ekliyoruz */
+    overflow: hidden; /* Resmin taşmasını engelliyoruz */
+}
+
+.cardd__avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; /* Tamamen yuvarlak yapıyoruz */
+}
+
+.cardd__title {
+    margin-top: 40px;
+    font-weight: 500;
+    font-size: 24px;
+    color: var(--main-color);
+    text-align: center; /* Metni ortalıyoruz */
+}
+
+.cardd__subtitle {
+    margin-top: 10px;
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--submain-color);
+    text-align: center; /* Metni ortalıyoruz */
+}
+
+.cardd__btn {
+    margin-top: 20px;
+    width: 100px;
+    height: 40px;
+    border: 2px solid var(--main-color);
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--main-color);
+    background: var(--bg-color);
+    text-transform: uppercase;
+    transition: all 0.3s;
+    text-align: center; /* Metni ortalıyoruz */
+}
+
+.cardd__btn:hover {
+    background: var(--main-color);
+    color: var(--bg-color);
+}
+
+.cardd__btn-solid:hover {
+    background: var(--bg-color);
+    color: var(--main-color);
+}
+
+.cardd__wrapper {
+    display: flex;
+    gap: 15px;
+    justify-content: center; /* Butonları ortalıyoruz */
+}
+
+
+/*trend sayfası css*/
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.gunluk-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.gunluk-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.gunluk-header img {
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+}
+
+.gunluk-info {
+    flex-grow: 1;
+}
+
+.gunluk-info h1 {
+    font-size: 48px;
+    margin: 0;
+}
+
+.gunluk-info p {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.gunluk-playlist {
+    background-color: #181818;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.gunluk-playlist table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.gunluk-playlist th, .gunluk-playlist td {
+    padding: 10px;
+    text-align: left;
+}
+
+.gunluk-playlist th {
+    border-bottom: 1px solid #333;
+}
+
+.gunluk-playlist tr:hover {
+    background-color: #282828;
+    color: #1db954;
+}
+
+.gunluk-play-button {
+    background-color: #1DB954;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.gunluk-play-button img {
+    width: 24px;
+    height: 24px;
+}
+
+.gunluk-playlist td img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
