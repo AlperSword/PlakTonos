@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plak Tonos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="website icon" type="png" href="img/Bright Colorful Playful Funny Donuts Food Circle Logo-Photoroom.png">
+    <!-- Font Awesome ve Google Fonts Bağlantıları -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Sidebar düzenlemeleri */
+        .sidebar {
+            width: 250px;
+            background-color: #121212;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            overflow-y: auto;
+        }
+        
+        .sidebar h2 {
+            color: white;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+        
+        .sidebar-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 8px 0;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        
+        .sidebar-item:hover {
+            background-color: #282828;
+        }
+        
+        .sidebar-item a {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            text-decoration: none;
+            color: #b3b3b3;
+            font-size: 14px;
+            overflow: hidden;
+        }
+        
+        .sidebar-item img {
+            width: 40px;
+            height: 40px;
+            margin-right: 12px;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+        
+        .sidebar-item span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex-grow: 1;
+        }
+        
+        .delete-btn {
+            background: none;
+            border: none;
+            color: #b3b3b3;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 5px 8px;
+            margin-left: 10px;
+            border-radius: 50%;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        
+        .delete-btn:hover {
+            color: white;
+            background-color: #535353;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-container">
+        <div class="login-card">
+            <h2>🎵 Plak Tonos'a Giriş</h2>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Kullanıcı Adı" required>
+                <input type="password" id="password" placeholder="Şifre" required>
+                <button type="submit">Giriş Yap</button>
+                <p id="loginMessage"></p>
+            </form>
+        </div>
+    </div>
+    
+    <div class="spotify-container" id="mainContent">
+      <!-- Sol Menü -->
+      <aside class="sidebar">
+          <div class="sidebar-header">
+              <h2>Plaklarım</h2>
+              <button id="addPlaylistBtn">+</button>
+          </div>
+          <ul id="myPlaylistSidebar">
+              <!-- JS ile doldurulacak -->
+          </ul>
+          
+          
+      </aside>
+
+        <!-- Ana İçerik -->
+        <main class="main-content">
+            <!-- Üst Kısım -->
+            <header class="top-bar">
+                <input type="text" id="searchInput" placeholder="Ne çalmak istiyorsun?" class="search-bar">
+                <div class="user-profile">
+                    <a href="profile.html">
+                        <img id="userProfileImage" src="img/rafael-silva_229x270.png" alt="Kullanıcı Fotoğrafı">
+                    </a>
+                </div>
+            </header>
+            
+            <!-- İçerik Kartları -->
+            <section class="daily-mix-section">
+                <h2>Alper İçin Derlendi</h2>
+                <div class="daily-mixes">
+                    <div class="mix-card">
+                        <a href="dailymix1.html"><img src="img/semidaily-Photoroom.png" alt="Daily Mix"></a>
+                        <p>Daily Mix 1</p>
+                        <span>Semicenk, Lvbel C5...</span>
+                        <br>
+                        <small>Oluşturan: Alper</small>
+                    </div>
+                    
+                    <div class="mix-card">
+                        <a href="dailymix2.html"><img src="img/sagodailyii-Photoroom.png" alt="Daily Mix"></a>
+                        <p>Daily Mix 2</p>
+                        <span>Sagopa Kajmer, Stabil...</span>
+                        <br>
+                        <small>Oluşturan: Alper</small>
+                    </div>
+                    <div class="mix-card">
+                        <a href="dailymix3.html"><img src="img/dailyiki.jpeg" alt="Daily Mix"></a>
+                        <p>Daily Mix 3</p>
+                        <span>MFÖ, Teoman...</span>
+                        <br>
+                        <small>Oluşturan: Alper</small>
+                    </div>
+                    <div class="mix-card">
+                        <a href="dailymix4.html"><img src="img/dailydort-Photoroom.png" alt="Daily Mix"></a>
+                        <p>Daily Mix 4</p>
+                        <span>Hande Yener, Sıla...</span>
+                        <br>
+                        <small>Oluşturan: Alper</small>
+                    </div>
+                    <div class="mix-card">
+                        <a href="dailymix5.html"><img src="img/dailbes-Photoroom.png" alt="Daily Mix"></a>
+                        <p>Daily Mix 5</p>
+                        <span>Mabel Matiz, Emre Fel...</span>
+                        <br>
+                        <small>Oluşturan: Alper</small>
+                    </div>
+                    <div class="mix-card">
+                        <a href="nkvt.html"><img src="img/khont-Photoroom.png" alt="Daily Mix"></a>
+                        <p>NKVT</p>
+                        <span>Khontkar, Motive...</span>
+                        <br>
+                        <small>Oluşturan: Alper</small>
+                    </div>
+                    <div class="mix-card">
+                        <a href="hothits.html"><img src="img/hothits-Photoroom.png" alt="Daily Mix"></a>
+                        <p>Hot Hits 2024</p>
+                        <span>Blok3, Melike Şahin...</span>
+                        <br>
+                        <small>Oluşturan: Alper</small>
+                    </div>
+                    <div class="mix-card">
+                        <a href="turkcerock.html"><img src="img/turkrock-Photoroom.png" alt="Daily Mix"></a>
+                        <p>Türkçe Rock</p>
+                        <span>Duman, Hayko...</span>
+                        <br>
+                        <small>Oluşturan: Alper</small>
+                    </div>
+                    <div class="mix-card">
+                        <a href="trend.html"><img src="img/ab67706f00000002770edcab1ca0d78e0f490370-Photoroom.png" alt="Daily Mix"></a>
+                        <p>Trend</p>
+                        <span>Bengü, Tan Taşçı</span>
+                        <br>
+                        <small>Oluşturan: Alper</small>
+                    </div>
+                    <div class="mix-card">
+                        <a href="rapmix.html"><img src="img/atii.jpeg" alt="Daily Mix"></a>
+                        <p>Rap Mix</p>
+                        <span>Ati242, Uzi...</span>
+                        <br>
+                        <small>Oluşturan: Alper</small>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Trend Şarkılar -->
+            <section class="trending">
+                <h2>Trend Şarkılar</h2>
+                <div class="trending-songs">
+                    <div class="video-card">
+                        <video autoplay muted loop class="background-video">
+                            <source src="img/melike.mp4" type="video/mp4">
+                            Tarayıcınız video etiketini desteklemiyor.
+                        </video>
+                        <div class="content">
+                            <img src="img/canın.jpeg" alt="Şarkı Klip Fotoğrafı" class="cover-image">
+                            <h4>Canın Beni Çekti</h4>
+                            <p>Melike Şahin</p>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <video autoplay muted loop class="background-video">
+                            <source src="img/İsimsiz video ‐ Clipchamp ile yapıldı (8).mp4" type="video/mp4">
+                            Tarayıcınız video etiketini desteklemiyor.
+                        </video>
+                        <div class="content">
+                            <img src="img/suc.jpeg" alt="Şarkı Klip Fotoğrafı" class="cover-image">
+                            <h4>Suçlarımdan Biri</h4>
+                            <p>Güneş</p>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <video autoplay muted loop class="background-video">
+                            <source src="img/İsimsiz video ‐ Clipchamp ile yapıldı (7).mp4" type="video/mp4">
+                            Tarayıcınız video etiketini desteklemiyor.
+                        </video>
+                        <div class="content">
+                            <img src="img/yakısıklkıhanşsen.jpeg" alt="Şarkı Klip Fotoğrafı" class="cover-image">
+                            <h4>Yakışıklı</h4>
+                            <p>Köfn & Simge</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div id="playlistModal" class="modal">
+            <div class="modal-header">
+                <h3>Yeni Playlist Oluştur</h3>
+                <button id="closeModal">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="cover-upload-area">
+                    <label for="imageUpload" class="cover-preview" id="coverPreview">
+                        <div class="upload-content">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Kapak Resmi Yükle</span>
+                        </div>
+                    </label>
+                    <input type="file" id="imageUpload" accept="image/*">
+                </div>
+                
+                <div class="form-group">
+                    <label for="playlistName">Playlist Adı</label>
+                    <input type="text" id="playlistName" placeholder="Örneğin: En Sevdiğim Şarkılar">
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button id="createPlaylistBtn" class="btn-create">
+                    <i class="fas fa-plus"></i> Oluştur
+                </button>
+            </div>
+        </div>
+  
+
+        <!-- Şu An Çalan (En Altta) -->
+        <footer class="now-playing-bar" id="footerBar" style="display: none;">
+            <div class="card">
+                <div class="top">
+                    <div class="pfp">
+                        <div class="playing">
+                        </div>
+                    </div>
+                    <div class="texts">
+                        <p class="title-1" id="song-title">September</p>
+                        <p class="title-2" id="song-artist">Earth, Wind & Fire</p>
+                    </div>
+                </div>
+                <audio id="audioPlayer" src="audio/song1.mp3"></audio>
+            
+                <div class="controls">
+                    <button onclick="prevSong()" class="control-btn">⏮️</button>
+                    <button onclick="togglePlay()" id="playBtn" class="control-btn">▶️</button>
+                    <button onclick="nextSong()" class="control-btn">⏭️</button>
+                </div>
+            
+                <!-- Progress bar with time display -->
+                <div id="progressContainer">
+                 
+                    <p class="current-time" id="currentTime">0:00</p>
+                    <div class="time-bar">
+                        <div class="elapsed"></div>
+                    </div>
+                    <p class="total-time" id="duration">0:00</p>
+                </div>
+            
+                <div class="volume-wrapper">
+                    <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1">
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const loginPage = document.getElementById("login-container");
+            const mainPage = document.getElementById("mainContent");
+            const footer = document.getElementById("footerBar");
+        
+            const isLoggedIn = localStorage.getItem("plakTonos_giris");
+        
+            if (isLoggedIn === "true") {
+                // Giriş yapıldıysa içerik göster
+                loginPage.style.display = "none";
+                mainPage.style.display = "block";
+                footer.style.display = "flex";
+            } else {
+                // İlk kez giriyorsa giriş formu göster
+                loginPage.style.display = "flex";
+                mainPage.style.display = "none";
+                footer.style.display = "none";
+            }
+        
+            const form = document.getElementById("loginForm");
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+                const user = document.getElementById("username").value;
+                const pass = document.getElementById("password").value;
+        
+                if (user === "admin" && pass === "1234") {
+                    localStorage.setItem("plakTonos_giris", "true");
+                    loginPage.style.display = "none";
+                    mainPage.style.display = "block";
+                    footer.style.display = "flex";
+                } else {
+                    document.getElementById("loginMessage").textContent = "❌ Hatalı giriş!";
+                }
+            });
+
+            // Sidebar playlist yükleme
+            const ul = document.getElementById("myPlaylistSidebar");
+            const playlist = JSON.parse(localStorage.getItem("playlist") || "[]");
+
+            playlist.forEach((item, idx) => {
+                const li = document.createElement("li");
+                li.dataset.index = idx;
+
+                li.innerHTML = `
+                    <div class="sidebar-item">
+                        <a href="#">
+                            <img src="${item.img}" alt="Kapak">
+                            <span>${item.title}</span>
+                        </a>
+                        <button class="delete-btn" title="Sil">✖</button>
+                    </div>
+                `;
+
+                // Silme butonu
+                li.querySelector(".delete-btn").addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    // Diziden çıkar
+                    playlist.splice(idx, 1);
+                    localStorage.setItem("playlist", JSON.stringify(playlist));
+                    // DOM'dan kaldır
+                    ul.removeChild(li);
+                });
+
+                ul.appendChild(li);
+            });
+        });
+    </script>
+
+    
+    <script>
+     document.addEventListener("DOMContentLoaded", function () {
+    // Elementleri seç
+    const loginPage = document.getElementById("login-container");
+    const mainPage = document.getElementById("mainContent");
+    const footer = document.getElementById("footerBar");
+    const addBtn = document.getElementById("addPlaylistBtn");
+    const modal = document.getElementById("playlistModal");
+    const modalOverlay = document.getElementById("modalOverlay");
+    const createBtn = document.getElementById("createPlaylistBtn");
+    const closeBtn = document.getElementById("closeModal");
+    const coverPreview = document.getElementById("coverPreview");
+    const imageUpload = document.getElementById("imageUpload");
+    let uploadedImage = null;
+
+    // Bildirim fonksiyonu
+    function showNotification(message, type = "success") {
+        const notification = document.createElement("div");
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+        notification.style.position = "fixed";
+        notification.style.bottom = "20px";
+        notification.style.right = "20px";
+        notification.style.padding = "10px 20px";
+        notification.style.backgroundColor = type === "success" ? "#28a745" : "#dc3545";
+        notification.style.color = "white";
+        notification.style.borderRadius = "5px";
+        notification.style.zIndex = "1000";
+
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+
+    // Giriş kontrolü
+    const isLoggedIn = localStorage.getItem("plakTonos_giris");
+    if (isLoggedIn === "true") {
+        loginPage.style.display = "none";
+        mainPage.style.display = "block";
+        footer.style.display = "flex";
+    } else {
+        loginPage.style.display = "flex";
+        mainPage.style.display = "none";
+        footer.style.display = "none";
+    }
+
+    // Giriş formu
+    const form = document.getElementById("loginForm");
+    if (form) {
+        form.addEventListener("submit", function (e) {
+            e.preventvDefault();
+            const user = document.getElementById("username").value;
+            const pass = document.getElementById("password").value;
+
+            if (user === "admin" && pass === "1234") {
+                localStorage.setItem("plakTonos_giris", "true");
+                loginPage.style.display = "none";
+                mainPage.style.display = "block";
+                footer.style.display = "flex";
+            } else {
+                document.getElementById("loginMessage").textContent = "❌ Hatalı giriş!";
+            }
+        });
+    }
+
+    // Modal açma
+    function openModal() {
+        modalOverlay.style.display = "block";
+        modal.style.display = "block";
+        setTimeout(() => {
+            modalOverlay.style.opacity = "1";
+            modal.classList.add("active");
+        }, 10);
+    }
+
+    // Modal kapama
+    function closeModal() {
+        modal.classList.remove("active");
+        modalOverlay.style.opacity = "0";
+        setTimeout(() => {
+            modal.style.display = "none";
+            modalOverlay.style.display = "none";
+            document.getElementById("playlistName").value = "";
+            coverPreview.innerHTML = `
+                <div class="upload-content">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <span>Kapak Resmi Yükle</span>
+                </div>
+            `;
+            uploadedImage = null;
+            imageUpload.value = "";
+        }, 300);
+    }
+
+    // Playlistleri render etme
+    function renderPlaylists() {
+        const ul = document.getElementById("myPlaylistSidebar");
+        const playlists = JSON.parse(localStorage.getItem("playlist") || "[]");
+
+        ul.innerHTML = "";
+
+        playlists.forEach((item, idx) => {
+            const li = document.createElement("li");
+            li.dataset.index = idx;
+
+            const imgSrc = item.img || "img/default-playlist-cover.png";
+
+            console.log(`Playlist ${item.title} için resim:`, imgSrc); // Debug log
+
+            li.innerHTML = `
+                <div class="sidebar-item">
+                    <a href="#">
+                        <img src="${imgSrc}" alt="Kapak">
+                        <span>${item.title}</span>
+                    </a>
+                    <button class="delete-btn" title="Sil">✖</button>
+                </div>
+            `;
+
+            // Silme butonu
+            li.querySelector(".delete-btn").addEventListener("click", function (e) {
+                e.stopPropagation();
+                e.preventDefault();
+                playlists.splice(idx, 1);
+                localStorage.setItem("playlist", JSON.stringify(playlists));
+                renderPlaylists();
+                showNotification(`"${item.title}" playlisti silindi!`);
+            });
+
+            ul.appendChild(li);
+        });
+    }
+
+    // Resim yükleme
+    if (imageUpload) {
+        imageUpload.addEventListener("change", function (e) {
+            const file = e.target.files[0];
+            console.log("Seçilen Dosya:", file);
+
+            if (file && file.type.match("image.*")) {
+                if (file.size > 2 * 1024 * 1024) { // 2MB sınırı
+                    showNotification("Resim boyutu 2MB'dan büyük olamaz", "error");
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    uploadedImage = event.target.result;
+                    console.log("Yüklenen Resim (Data URL):", uploadedImage.substring(0, 50) + "..."); // Kısaltılmış log
+                    coverPreview.innerHTML = `<img src="${uploadedImage}" alt="Playlist Cover" style="width:100%;height:100%;object-fit:cover;">`;
+                    document.getElementById("playlistName").focus();
+                };
+                reader.onerror = function () {
+                    console.error("Resim yüklenirken hata oluştu");
+                    showNotification("Resim yüklenirken hata oluştu", "error");
+                    uploadedImage = null;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                console.warn("Geçersiz dosya türü:", file ? file.type : "Dosya yok");
+                showNotification("Lütfen geçerli bir resim dosyası seçin", "error");
+            }
+        });
+    }
+
+    // Modal açma butonu
+    if (addBtn) {
+        addBtn.addEventListener("click", openModal);
+    }
+
+    // Modal kapama butonu
+    if (closeBtn) {
+        closeBtn.addEventListener("click", closeModal);
+    }
+
+    // Overlay'e tıklayarak kapatma
+    if (modalOverlay) {
+        modalOverlay.addEventListener("click", closeModal);
+    }
+
+    // ESC tuşuyla kapatma
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+            closeModal();
+        }
+    });
+
+    // Playlist oluşturma
+    if (createBtn) {
+        createBtn.addEventListener("click", function () {
+            const nameInput = document.getElementById("playlistName");
+            const name = nameInput.value.trim();
+
+            console.log("Playlist Adı:", name);
+            console.log("Resim Yüklendi mi?", uploadedImage !== null);
+            console.log("Kullanılan Resim:", uploadedImage || "img/default-playlist-cover.png");
+
+            if (name && name.length > 0) {
+                const coverImg = uploadedImage || "img/default-playlist-cover.png";
+
+                const newPlaylist = {
+                    id: Date.now(),
+                    title: name,
+                    img: coverImg,
+                    date: new Date().toLocaleDateString(),
+                };
+
+                let playlists = JSON.parse(localStorage.getItem("playlist") || "[]");
+                playlists.push(newPlaylist);
+                localStorage.setItem("playlist", JSON.stringify(playlists));
+
+                renderPlaylists();
+                closeModal();
+                showNotification(`"${name}" playlisti oluşturuldu!`);
+            } else {
+                nameInput.focus();
+                nameInput.style.border = "2px solid #e22134";
+                setTimeout(() => (nameInput.style.border = ""), 2000);
+                showNotification("Playlist adı boş olamaz", "error");
+            }
+        });
+    }
+
+    // İlk yüklemede playlistleri göster
+    renderPlaylists();
+});
+  </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
